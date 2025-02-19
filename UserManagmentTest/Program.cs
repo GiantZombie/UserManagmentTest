@@ -62,6 +62,11 @@
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("User registered successfully");
             }
+            else if (result == Result.UsernameIsNotUnique)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("The username is already used");
+            }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -79,12 +84,12 @@
 
             if (username == null || password == null)
             {
-                Console.WriteLine("Username and password cannot be null.");
+                Console.WriteLine("password or username is incorrect, try again.");
                 return;
             }
 
             bool success = UserManager.Login(username, password);
-            Console.WriteLine(success ? "User logged in successfully" : "User login failed");
+            Console.WriteLine(success ? "User logged in successfully" : "password or username is incorrect, try again. ");
         }
 
         static void UnregisterUser()
